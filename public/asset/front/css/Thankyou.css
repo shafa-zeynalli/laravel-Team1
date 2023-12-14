@@ -1,0 +1,16 @@
+.thanks div{
+    color: #505050;
+    padding: 32px 0;
+    border-bottom: 1px solid #E7E7E9;
+
+    >p{
+        font: 400 normal 16px 'Inter', sans-serif;
+    }
+}
+.thanks div:last-child{
+    border-bottom: none;
+}
+.thanks h3{
+    font: 400 normal 20px 'Inter', sans-serif;
+    margin-top: 32px ;
+}

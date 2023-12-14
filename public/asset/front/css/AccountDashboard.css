@@ -1,0 +1,100 @@
+.accountDashboard {
+    display: flex;
+    flex-direction: column;
+
+    & h2 {
+        font: 400 normal 26px 'Inter', sans-serif;
+        color: #303030;
+    }
+    .bg {
+        background-color: #F6F6F6;
+    }
+    & ul {
+        display: flex;
+        width: 100%;
+        text-decoration: none;
+        list-style-type: none;
+        margin: 40px 0 30px 0;
+
+        & a {
+            text-decoration: none;
+        }
+
+        & li {
+            padding: 10px 34px;
+            border: 1px solid #E7E7E9;
+            color: #303030;
+            font: 400 normal 16px 'Inter', sans-serif;
+        }
+    }
+
+    & p {
+        font: 400 normal 16px 'Inter', sans-serif;
+        color: #303030;
+        margin-bottom: 10px;
+
+        & span {
+            color: #898989;
+            & a{
+            text-decoration: none;
+
+            }
+        }
+    }
+
+    & table {
+        margin: 50px 0;
+        & th{
+            text-align: left;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #898989;
+            color: #303030;
+            font: 400 normal 16px 'Inter', sans-serif;
+        }
+        & td{
+            padding: 16px 0;
+            font: 400 normal 13px 'Inter', sans-serif;
+            color: #303030;
+
+        }
+
+    }
+
+    & form{
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+
+        & h3{
+            font: 400 normal 20px 'Inter', sans-serif;
+            margin: 25px 0;
+        }
+
+        & label{
+            display: flex;
+            flex-direction: column ;
+            margin: 20px 0;
+            color: #898989;
+            font: 400 normal 13px 'Inter', sans-serif;
+
+            & input{
+                padding: 15px 10px;
+                border-radius: 7px;
+                background-color: #F6F6F6;
+                border: none;
+                margin: 5px 0;
+                outline-color: #EC7160;
+            }
+        }
+
+        & button{
+            padding: 15px 0;
+            text-align: center;
+            background-color: #EC7160;
+            color: white;
+            border: none;
+            border-radius: 7px;
+            margin-top: 20px;
+        }
+    }
+}

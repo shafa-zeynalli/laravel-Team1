@@ -1,0 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Aclonica&family=Damion&family=Inter&display=swap');
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.dFlex{
+    display: flex;
+    >div:first-child{
+        width: 25%;
+        position: relative;
+    }
+
+    >div:last-child{
+        width: 75%;
+
+        .container{
+            width: 70%;
+            margin: 115px auto 50px ;
+        }
+    }
+    .logo {
+        display: flex;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 20px;
+
+        >div{
+            background-color: #EC7160;
+            display: inline-block;
+            padding: 0 10px 0 5px;
+            border-radius: 50%;
+            margin-right: 5px;
+
+            >p{
+                font: 400 normal 24px 'Damion', cursive;
+                color: white;
+            }
+        }
+        > p{
+            font: 400 normal 24px 'Aclonica', sans-serif;
+            color: #EC7160;
+            padding: 0;
+            margin: 0;
+        }
+    }
+}
+.w-100{
+    width: 100%;
+}
+.errMessage{
+    padding: 5px 10px;
+    background-color: #d5d4d4;
+    color: green;
+    margin-top: 20px;
+}
+
+
+
+
+.pagination-container {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    /*align-items: center;*/
+    /*text-align: center;*/
+}
+
+/* Özelleştirilmiş stiller ekleyebilirsiniz */
+.pagination {
+    display: flex;
+    /*justify-content: center;*/
+}
+.pagination .active {
+    background-color: #afacac;
+    padding: 5px 10px;
+    border-radius: 50%;
+    margin: -5px 10px;
+    color: black;
+    font-size: 20px;
+}
+.pagination li{
+    list-style-type: none;
+}
+.pagination-container nav{
+    display: flex;
+}
