@@ -14,21 +14,34 @@
     </div>
 
     <ul class="ulSB">
-        <li <?php if (str_contains($_SERVER['PHP_SELF'], 'index.php')) echo 'style="border-left: 3px solid #EC7160;"'; ?>>
-            <a href="index.php">Blog</a></li>
-        <li <?php if (str_contains($_SERVER['PHP_SELF'], 'Cart.php')) echo 'style="border-left: 3px solid #EC7160;"'; ?> >
-            <a href="Cart.php">Cart
+        <li class="{{ \Illuminate\Support\Facades\Request::is('/')?"active":"" }}">
+            <a href="{{route('front.blog')}}">Blog</a>
+        </li>
+        <li class="{{ \Illuminate\Support\Facades\Request::is('cart')?"active":"" }}">
+            <a href="{{route('front.blog')}}">Cart
                 {{--                    (<?php echo $arrCount[0]['count'] ?>)--}}
-            </a></li>
-        <li <?php if (str_contains($_SERVER['PHP_SELF'], 'Login.php')) echo 'style="border-left: 3px solid #EC7160;"'; ?>>
-            <a href="Login.php"><?php echo !isset($_SESSION['userId']) ? 'Log In' : ''; ?></a></li>
-        <li <?php if (str_contains($_SERVER['PHP_SELF'], 'Account')) echo 'style="border-left: 3px solid #EC7160;"'; ?>>
-            <a href="AccountDashboard.php"><?php echo isset($_SESSION['userId']) ? 'Account' : ''; ?></a></li>
-        <li <?php if (str_contains($_SERVER['PHP_SELF'], 'Register.php')) echo 'style="border-left: 3px solid #EC7160;"'; ?>>
-            <a href="Register.php">Sign Up</a></li>
-        <li <?php if (str_contains($_SERVER['PHP_SELF'], 'Checkout.php')) echo 'style="border-left: 3px solid #EC7160;"'; ?>>
-            <a href="Checkout.php">Checkout</a></li>
-        <li <?php if (str_contains($_SERVER['PHP_SELF'], 'Thankyou.php')) echo 'style="border-left: 3px solid #EC7160;"'; ?>>
-            <a href="Thankyou.php">Thankyou</a></li>
+            </a>
+        </li>
+
+        @auth
+        <li class="{{ \Illuminate\Support\Facades\Request::is('/')?"active":"" }}">
+            <a href="{{route('front.blog')}}">Account </a>
+        </li>
+        @else
+        <li class="{{ \Illuminate\Support\Facades\Request::is('login')?"active":"" }}">
+            <a href="{{route('front.login')}}">Log In </a>
+        </li>
+        <li class="{{ \Illuminate\Support\Facades\Request::is('signup')?"active":"" }}">
+            <a href="{{route('front.signup')}}">Sign Up</a>
+        </li>
+
+        @endauth
+
+        <li class="{{ \Illuminate\Support\Facades\Request::is('admin/profile')?"active":"" }}">
+            <a href="{{route('front.signup')}}">Checkout</a>
+        </li>
+        <li class="{{ \Illuminate\Support\Facades\Request::is('admin/profile')?"active":"" }}">
+            <a href="{{route('front.signup')}}">Thankyou</a>
+        </li>
     </ul>
 </div>

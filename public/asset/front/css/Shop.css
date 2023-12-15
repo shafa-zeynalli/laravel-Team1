@@ -25,9 +25,12 @@
         width: 100%;
         flex-wrap: wrap;
 
+
         .card {
             width: 30%;
             margin: 25px 0;
+            text-decoration: none;
+            color: #1a202c;
 
             & img {
                 width: 100%;

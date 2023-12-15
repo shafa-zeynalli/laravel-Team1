@@ -1,6 +1,5 @@
 <div class="footer">
     <div class="logo">
-        <!--        <img src="images/logo.png" alt="hjbdcjhddc">-->
         <div><p>N</p></div>
         <span>WP-Notes</span>
     </div>

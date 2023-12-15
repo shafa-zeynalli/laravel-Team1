@@ -3,8 +3,6 @@
 @section('content')
     <div class="singlePage">
         <div class="flex w-100">
-
-
             <div class='flex w-60 h-340'>
                 <div class='images w-20'>
                     <img src={{$product->img}}>
@@ -31,7 +29,7 @@
                     <form action='' class='myForm' method='post'>
                         <div class='flex'>
                             <input type='number' class='quantityInput' value='1' name='quantity'>
-                            <input type='hidden' class='quantityInput'   name='product_id'>
+                            <input type='hidden' class='quantityInput'  value="{{$product->id}}" name='product_id'>
                             <button type='submit' class='addToCart' >Add To Cart</button>
                         </div>
                     </form>
@@ -46,9 +44,9 @@
             <button>Additional Information</button>
         </div>
 
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur sed mollis augue. Cras suscipit sit amet
-            est in
-            aliquam in vel blandit nunc.
+        <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit curabitur sed mollis augue. Cras suscipit sit amet
+            est in  aliquam in vel blandit nunc.
         </p>
     </div>
 
