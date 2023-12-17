@@ -18,7 +18,7 @@
             <a href="{{route('front.blog')}}">Blog</a>
         </li>
         <li class="{{ \Illuminate\Support\Facades\Request::is('cart')?"active":"" }}">
-            <a href="{{route('front.blog')}}">Cart
+            <a href="{{route('front.cart')}}">Cart
                 {{--                    (<?php echo $arrCount[0]['count'] ?>)--}}
             </a>
         </li>
@@ -37,8 +37,8 @@
 
         @endauth
 
-        <li class="{{ \Illuminate\Support\Facades\Request::is('admin/profile')?"active":"" }}">
-            <a href="{{route('front.signup')}}">Checkout</a>
+        <li class="{{ \Illuminate\Support\Facades\Request::is('checkout')?"active":"" }}">
+            <a href="{{route('front.checkout')}}">Checkout</a>
         </li>
         <li class="{{ \Illuminate\Support\Facades\Request::is('admin/profile')?"active":"" }}">
             <a href="{{route('front.signup')}}">Thankyou</a>

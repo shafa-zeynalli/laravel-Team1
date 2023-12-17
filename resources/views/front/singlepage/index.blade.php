@@ -26,7 +26,8 @@
                         <option value='color'>Color</option>
                     </select>
 
-                    <form action='' class='myForm' method='post'>
+                    <form action="{{ route('front.cart') }}" class='myForm' method='post'>
+                        @csrf
                         <div class='flex'>
                             <input type='number' class='quantityInput' value='1' name='quantity'>
                             <input type='hidden' class='quantityInput'  value="{{$product->id}}" name='product_id'>

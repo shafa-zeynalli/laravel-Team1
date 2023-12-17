@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\front;
+namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
 use App\Models\User;
@@ -46,17 +46,14 @@ class AuthController extends Controller
 
         }
 
-//        if (session()->regenerate()) {
-//            // Oturum regenerasyonu başarılı oldu
-//            dd ("Oturum başarıyla regenere edildi.");
-//        } else {
-//            // Oturum regenerasyonu başarısız oldu
-//            dd ("Oturum regenere edilemedi.");
-//        }
-
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
 
+
+    public function accountDetails()
+    {
+        return view('front.auth.account.accountdetails');
+    }
 }

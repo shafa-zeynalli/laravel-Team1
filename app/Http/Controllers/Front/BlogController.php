@@ -16,16 +16,11 @@ class BlogController extends Controller
 //        Auth::logout();
 //        dd(Auth::user());
         return view('front.index',compact('products'));
-
     }
 
 
     public function sendSinglePage($id){
         $product = Product::find($id);
-
         return view('front.singlepage.index', compact('product'));
     }
-
-
-
 }
