@@ -11,10 +11,13 @@ use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
-    public function index(){
-        $products = Product::paginate(6);
-//        Auth::logout();
-//        dd(Auth::user());
+    public function index(Request $request){
+        $pTitle = $request->p_title;
+
+        $products = !empty($pTitle)
+            ? Product::where('title', 'LIKE', "$pTitle%")->paginate(6)
+            : Product::paginate(6);
+
         return view('front.index',compact('products'));
     }
 

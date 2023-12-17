@@ -3,12 +3,18 @@
 @section('content')
     <div class="login">
         <div class="welcome">
+            @if(session('success'))
+                <span class="errMessage">
+                    {{ session('success') }}
+                </span>
+            @endif
             <h2>Welcome back</h2>
             <p>Enter your email and password to sign in to the website.</p>
             <p>Not signed up yet? <a href="{{route('front.signup')}}">Sign up</a></p>
         </div>
 
         <div class="inputs" >
+
 
             <form action="{{route('front.login')}}" method="post">
                 @csrf

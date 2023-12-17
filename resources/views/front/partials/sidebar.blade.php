@@ -5,8 +5,8 @@
     </div>
     <div class="inputSB">
 
-        <form action="SearchShop.php" method="post">
-            <input type="text" placeholder="Search" name="search">
+        <form action="{{route('front.blog')}}" method="get">
+            <input type="text" placeholder="Search" name="p_title">
             <button type="submit"> Search</button>
         </form>
 
@@ -14,7 +14,7 @@
     </div>
 
     <ul class="ulSB">
-        <li class="{{ \Illuminate\Support\Facades\Request::is('/')?"active":"" }}">
+        <li class="{{ \Illuminate\Support\Facades\Request::is('blog*')?"active":"" }}">
             <a href="{{route('front.blog')}}">Blog</a>
         </li>
         <li class="{{ \Illuminate\Support\Facades\Request::is('cart')?"active":"" }}">
@@ -24,8 +24,8 @@
         </li>
 
         @auth
-        <li class="{{ \Illuminate\Support\Facades\Request::is('/')?"active":"" }}">
-            <a href="{{route('front.blog')}}">Account </a>
+        <li class="{{ \Illuminate\Support\Facades\Request::is('account/*')?"active":"" }}">
+            <a href="{{route('front.accountDashboard')}}">Account </a>
         </li>
         @else
         <li class="{{ \Illuminate\Support\Facades\Request::is('login')?"active":"" }}">
@@ -40,8 +40,8 @@
         <li class="{{ \Illuminate\Support\Facades\Request::is('checkout')?"active":"" }}">
             <a href="{{route('front.checkout')}}">Checkout</a>
         </li>
-        <li class="{{ \Illuminate\Support\Facades\Request::is('admin/profile')?"active":"" }}">
-            <a href="{{route('front.signup')}}">Thankyou</a>
+        <li class="{{ \Illuminate\Support\Facades\Request::is('thankyou')?"active":"" }}">
+            <a href="{{route('front.thankyou')}}">Thankyou</a>
         </li>
     </ul>
 </div>

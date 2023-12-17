@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
@@ -42,7 +43,7 @@ class AuthController extends Controller
 //            Auth::loginUsingId(\auth()->id());
 //            Auth::login($credentials);
 //            dd(Auth::user());
-            return redirect()->intended('/ ');
+            return redirect()->intended('/blog ');
 
         }
 
@@ -52,8 +53,57 @@ class AuthController extends Controller
     }
 
 
+
+
+
     public function accountDetails()
     {
         return view('front.auth.account.accountdetails');
     }
+    public function accountOrders()
+    {
+        return view('front.auth.account.accountorders');
+    }
+    public function accountDashboard()
+    {
+        return view('front.auth.account.accountdashboard');
+    }
+    public function accountLogOut()
+    {
+        return view('front.auth.account.accountlogout');
+    }
+
+    public function logOut()
+    {
+        Auth::logout();
+        return view('front.auth.login');
+    }
+
+
+    public function updatePassword(Request $request)
+    {
+       $data = $request->validate([
+            'email' => 'required|email',
+            'current_password' => 'required|min:4',
+            'password' => 'required|min:4',
+            'password_confirmation' => 'required_with:password|same:password',
+        ]);
+
+        $user = Auth::user();
+//        dd($user);
+        if ($user->email !== $request->email) {
+            return back()->withErrors(['email' => 'The provided email does not match your account.']);
+        }
+
+        if (Hash::check($request->current_password, $user->password)) {
+            $user->update([
+                'password' => Hash::make($request->password),
+            ]);
+            Auth::logout();
+            return redirect()->route('front.login')->with('success', 'Password changed successfully.');
+        }
+
+        return back()->withErrors(['current_password' => 'The current password is incorrect.']);
+    }
+
 }
