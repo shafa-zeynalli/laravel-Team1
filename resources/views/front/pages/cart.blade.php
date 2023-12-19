@@ -8,7 +8,7 @@
             <table>
                 @if($products->isEmpty())
                     <tr>
-                        <td class='errMessage'>Your cart is empty</td>
+                        <td class='successMessage'>Your cart is empty</td>
                     </tr>
                 @else
                     @php

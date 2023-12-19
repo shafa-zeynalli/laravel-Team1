@@ -4,7 +4,7 @@
     <div class="login">
         <div class="welcome">
             @if(session('success'))
-                <span class="errMessage">
+                <span class="successMessage">
                     {{ session('success') }}
                 </span>
             @endif
@@ -19,7 +19,7 @@
             <form action="{{route('front.login')}}" method="post">
                 @csrf
                 <label for="email" >Email Address
-                    <input type="text" name="email">
+                    <input type="text" name="email" value="{{old('email')}}">
                     @error('email')
                     <span class="errMessage">{{$message}}</span>
                     @enderror

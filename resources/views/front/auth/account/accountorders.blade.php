@@ -11,15 +11,16 @@
             <th>Action</th>
         </tr>
         </thead>
-
         <tbody>
-        <tr>
-            <td>{$val['product_id']}</td>
-            <td>$yeniTarix</td>
-            <td>{$val['status']}</td>
-            <td>$<span>{$val['price']}</span></td>
-            <td>View</td>
-        </tr>
+        @foreach($orders as $order)
+            <tr>
+                <td>{{$order->id}}</td>
+                <td>{{$order->created_at}}</td>
+                <td>{{$order->status}}</td>
+                <td>$<span>{{$order->discount_price}}</span></td>
+                <td>View</td>
+            </tr>
+        @endforeach
 
         </tbody>
     </table>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Cart;
 use App\Models\m;
 use App\Models\Order;
 use App\Models\OrderItems;
@@ -32,41 +33,56 @@ class OrderController extends Controller
         $email = $request->input('email');
         $address = $request->input('address');
 
-        $userId = auth()->user()->id; // Veya bu değeri başka bir şekilde alabilirsiniz
+        $userId = auth()->user()->id;
 
-        // OrderItems tablosundan gerekli verileri al
-        $orderItems = DB::table('products')
-            ->join('order_items', function ($join) {
-                $join->on('products.id', '=', 'order_items.product_id')
-                    ->where('order_items.user_id', '=', Auth::user()->id);
+        $cartItems = DB::table('products')
+            ->join('carts', function ($join) {
+                $join->on('products.id', '=', 'carts.product_id')
+                    ->where('carts.user_id', '=', Auth::user()->id);
             })
-            ->select('products.*', 'order_items.*')
+            ->select('products.*', 'carts.*')
             ->get();
-//        $orderItems = OrderItems::where('user_id', $userId)->get();
-//        dd($orderItems);
-        // Her bir OrderItem için Order tablosuna yeni kayıt ekle
-        foreach ($orderItems as $orderItem) {
-            Order::create([
+
+//        dd($cartItems);
+
+        $order= Order::create([
+            'user_id' => $userId,
+            'status' => 1,
+            'emailAddress' => $request->input('email'),
+            'first_name' => $request->input('first_name'),
+            'last_name' => $request->input('last_name'),
+            'phone' => $request->input('phone'),
+            'street_address' => $request->input('address'),
+        ]);
+
+        dd($order);
+        $orders = Order::where('user_id', $userId)->latest()->first();
+        $subTotalPrice=0;
+
+        foreach ($cartItems as $cartItem) {
+            $subTotalPrice += ($cartItem->price - $cartItem->price * $cartItem->discount / 100) * $cartItem->quantity;
+            OrderItems::create([
                 'user_id' => $userId,
-                'product_id' => $orderItem->product_id,
-                'status' => $orderItem->status,
-                'product_quantity' => $orderItem->quantity,
-                'price' => $orderItem->price,
-                'discount' => $orderItem->discount,
-                'emailAddress' => $request->input('email'),
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'phone' => $request->input('phone'),
-                'street_address' => $request->input('address'),
+                'product_id' => $cartItem->product_id,
+                'order_id' => $orders->id,
+                'status' => $cartItem->status,
+                'product_quantity' => $cartItem->quantity,
+                'price' => $cartItem ->price,
+                'discount' => $cartItem->discount,
             ]);
         }
 
-        OrderItems::where('user_id', $userId)->delete();
+//        dd($subTotalPrice);
+        $orders->discount_price = $subTotalPrice;
+        $orders->save();
 
-        $orderID = Order::latest()->first()->id;
+        Cart::where('user_id', $userId)->delete();
+
+        $orderID = $orders->id;
 //        dd($orderID);
+        $request->replace([]);
 
-        return view('front.pages.thankyou', compact('email','address','orderID'));
+        return view('front.pages.thankyou', compact('email','address','orderID', 'subTotalPrice'));
     }
 
 }

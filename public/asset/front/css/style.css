@@ -54,6 +54,10 @@
     color: red;
     /*margin-top: 20px;*/
 }
+.successMessage{
+    color: green;
+    font-size: 24px;
+}
 
 
 

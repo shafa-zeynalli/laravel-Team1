@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Front;
 
 use App\Http\Controllers\Controller;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
@@ -48,7 +49,7 @@ class AuthController extends Controller
         }
 
         return back()->withErrors([
-            'email' => 'The provided credentials do not match our records.',
+            'password' => 'The provided credentials do not match our records.',
         ])->onlyInput('email');
     }
 
@@ -62,7 +63,9 @@ class AuthController extends Controller
     }
     public function accountOrders()
     {
-        return view('front.auth.account.accountorders');
+        $orders = Order::where('user_id', Auth::id())->get();
+//        dd($orders);
+        return view('front.auth.account.accountorders', compact('orders'));
     }
     public function accountDashboard()
     {

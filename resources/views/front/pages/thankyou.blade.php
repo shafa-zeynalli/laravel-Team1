@@ -21,7 +21,7 @@
             <h2>Your Order</h2>
             <div>
                 <p>Product <span>Subtotal</span></p>
-                <p>Total <span>$598</span></p>
+                <p>Total <span>${{$subTotalPrice}}</span></p>
             </div>
 
         </div>
