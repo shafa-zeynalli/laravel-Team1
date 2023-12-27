@@ -55,7 +55,7 @@ class OrderController extends Controller
             'street_address' => $request->input('address'),
         ]);
 
-        dd($order);
+//        dd($order);
         $orders = Order::where('user_id', $userId)->latest()->first();
         $subTotalPrice=0;
 

@@ -17,26 +17,26 @@
                     <span class="nav-link-text ms-1">Dashboard</span>
                 </a>
             </li>
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link {{ \Illuminate\Support\Facades\Request::is('admin/tables')?"active":"" }}" href=" ">--}}
+{{--                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">--}}
+{{--                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>--}}
+{{--                    </div>--}}
+{{--                    <span class="nav-link-text ms-1">Tables</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
+{{--            <li class="nav-item">--}}
+{{--                <a class="nav-link {{ \Illuminate\Support\Facades\Request::is('admin/users')?"active":"" }}" href=" ">--}}
+{{--                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">--}}
+{{--                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>--}}
+{{--                    </div>--}}
+{{--                    <span class="nav-link-text ms-1">Users</span>--}}
+{{--                </a>--}}
+{{--            </li>--}}
             <li class="nav-item">
-                <a class="nav-link {{ \Illuminate\Support\Facades\Request::is('admin/tables')?"active":"" }}" href=" ">
+                <a class="nav-link {{ \Illuminate\Support\Facades\Request::is('admin/products')?"active":"" }}" href="{{route('admin.products')}} ">
                     <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Tables</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ \Illuminate\Support\Facades\Request::is('admin/users')?"active":"" }}" href=" ">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
-                    </div>
-                    <span class="nav-link-text ms-1">Users</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link {{ \Illuminate\Support\Facades\Request::is('admin/products')?"active":"" }}" href=" ">
-                    <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
-                        <i class="ni ni-calendar-grid-58 text-warning text-sm opacity-10"></i>
+                        <i class="fa-solid fa-bag-shopping text-warning text-sm opacity-10"></i>
                     </div>
                     <span class="nav-link-text ms-1">Products</span>
                 </a>
@@ -54,10 +54,18 @@
                         <span class="nav-link-text ms-1">Profile</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ \Illuminate\Support\Facades\Request::is('admin/logout')?"active":"" }} " href="{{route('admin.logout')}}">
+                        <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
+                            <i class="fa-solid fa-right-from-bracket text-dark text-sm opacity-10"></i>
+                        </div>
+                        <span class="nav-link-text ms-1">Logout</span>
+                    </a>
+                </li>
 
             @else
                 <li class="nav-item">
-                    <a class="nav-link " href=" ">
+                    <a class="nav-link " href="{{route('admin.login')}}">
                         <div class="icon icon-shape icon-sm border-radius-md text-center me-2 d-flex align-items-center justify-content-center">
                             <i class="ni ni-single-copy-04 text-warning text-sm opacity-10"></i>
                         </div>

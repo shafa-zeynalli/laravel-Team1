@@ -13,7 +13,7 @@ Route::post('/login', [Auth::class, 'authenticate']);
 Route::get('/signup', [Auth::class, 'sendSignupPage'])->name('front.signup');
 Route::post('/signup', [Auth::class, 'register']);
 
-Route::group(['middleware'=>'auth'],function (){
+Route::group(['middleware'=>'fa'],function (){
     Route::match(['get', 'post'], '/cart', [Cart::class, 'index'])->name('front.cart');
     Route::post('/remove-products', [Cart::class, 'removeProduct'])->name('remove.product');
     Route::match(['get', 'post'], '/checkout', [Order::class, 'index'])->name('front.checkout');
