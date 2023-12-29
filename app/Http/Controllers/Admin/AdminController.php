@@ -73,7 +73,7 @@ class AdminController extends Controller
             'status' =>'required',
         ]);
         $product = Product::find($request->productId);
-//        dd($product);
+//        dd($request->all());
         $oldImage = $product->img;
 
         $product->update([

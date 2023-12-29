@@ -18,7 +18,7 @@
             <div class="products">
                 @foreach ($products as $product)
                     <a class='card' href="{{route('front.singlepage', ['id' => $product->id]) }}">
-                        <img src={{$product->img}}>
+                        <img src="{{ Storage::url($product->img)}}">
                         <p>{{$product->title}}</p>
                         <p> $<span class='line'>{{$product->price}}</span>
                             <span>{{$product->discount}}% endirim olub</span>

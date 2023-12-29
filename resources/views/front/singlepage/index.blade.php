@@ -5,11 +5,11 @@
         <div class="flex w-100">
             <div class='flex w-60 h-340'>
                 <div class='images w-20'>
-                    <img src={{$product->img}}>
-                    <img src={{$product->img}}>
-                    <img src={{$product->img}}>
+                    <img src="{{ Storage::url($product->img)}}">
+                    <img src="{{ Storage::url($product->img)}}">
+                    <img src="{{ Storage::url($product->img)}}">
                 </div>
-                <img src={{$product->img}}>
+                <img src="{{ Storage::url($product->img)}}">
             </div>
             <div class='information w-40'>
                 <h3>{{$product->title}}</h3>

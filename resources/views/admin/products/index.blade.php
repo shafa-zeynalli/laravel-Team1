@@ -103,10 +103,9 @@
                                         <p>{{ $product->id }}</p>
                                     </td>
                                     <td class=" w-1 ">
-                                        {{--                                        <img src="{{ Storage::url($product->img)}}" class=" w-100 ">--}}
+                                            <img src="{{ Storage::url($product->img)}}" class=" w-100 ">
 
-                                        <img src="{{ asset('storage/'. $product->img )}}" class=" w-100 ">
-                                        {{--                                        <p>{{ asset('storage/'. $product->img )}}</p>--}}
+{{--                                        <img src="{{ asset('storage/'. $product->img )}}" class=" w-100 ">--}}
                                     </td>
                                     <td class="text-center">
                                         <p>{{ $product->title }}</p>

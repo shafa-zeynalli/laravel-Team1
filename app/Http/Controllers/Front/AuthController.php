@@ -25,6 +25,7 @@ class AuthController extends Controller
 //        $user=new User();
         $user=User::create($data);
 
+//        return redirect()->back();
         return redirect()->route('front.login');
     }
 
@@ -44,6 +45,8 @@ class AuthController extends Controller
 //            Auth::loginUsingId(\auth()->id());
 //            Auth::login($credentials);
 //            dd(Auth::user());
+
+//            return redirect()->back();
             return redirect()->intended('/blog ');
 
         }
